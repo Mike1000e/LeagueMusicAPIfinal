@@ -1,5 +1,7 @@
 package com.league.LeagueMusicAPI.presentation;
 
+
+import com.league.LeagueMusicAPI.service.LocService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -12,14 +14,20 @@ import java.util.List;
 @RestController
 public class LocController {
 
+    private final LocService locService;
+
+    public LocController(LocService locService) {
+        this.locService = locService;
+    }
+
     @GetMapping("/searchLocResults")
-    @Operation(value = "Searches for books matching the search term",
-            notes = "Response may include multiple Result values.",
-            response = String.class)
+    @Operation(summary = "Searches for books matching the search term",
+            description = "Response may include multiple Result values.")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Result(s) found")
+            @ApiResponse(responseCode = "200", description = "Result(s) found"),
+            @ApiResponse(responseCode = "400", description = "Result(s) not found")
     })
-    public String getResults(@RequestParam(value="q") String query){
-    return "Searching for books related to " + query;
-}
+    public String getResults(@RequestParam(value="q") String query) {
+        return locService.getResults(query);
+    }
 }
