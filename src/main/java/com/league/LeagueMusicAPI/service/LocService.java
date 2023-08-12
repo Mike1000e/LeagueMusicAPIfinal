@@ -9,11 +9,12 @@ public class LocService {
 private final LocRepository locRepository;
 
     public LocService(LocRepository locRepository) {
+
         this.locRepository = locRepository;
     }
 
     public String getResults(String query){
-        return "Searching for books related to " + query;
+        return locRepository.getResults(query);
     }
 
 }

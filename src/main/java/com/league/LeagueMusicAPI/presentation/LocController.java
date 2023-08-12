@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,7 @@ public class LocController {
             @ApiResponse(responseCode = "200", description = "Result(s) found"),
             @ApiResponse(responseCode = "400", description = "Result(s) not found")
     })
-    public String getResults(@RequestParam(value="q") String query) {
+    public String getResults(@RequestParam String query) {
         return locService.getResults(query);
     }
 }

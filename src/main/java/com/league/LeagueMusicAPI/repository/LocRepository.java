@@ -8,7 +8,7 @@ public class LocRepository {
 
     private final WebClient webClient;
 
-    private static final String baseUrl = "https://www.loc.gov/books";
+    private static final String baseUrl = "http://ergast.com/api";
 
     public LocRepository() {
         webClient = WebClient
@@ -19,6 +19,6 @@ public class LocRepository {
 
 
     public String getResults(String query) {
-        return "Searching for songs made by " + query;
+        return "Searching for race results in the year " + query;
     }
 }
