@@ -1,5 +1,6 @@
 package com.league.LeagueMusicAPI.repository.dto;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -11,7 +12,9 @@ public class LocResponce {
 
     @JsonProperty("results")
     public List<Result> getResults(){
-        return results;
+
+        System.out.println(results);
+    return results;
     }
 
     @JsonProperty("results")

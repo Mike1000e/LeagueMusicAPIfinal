@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Repository
 public class LocRepository {
@@ -23,19 +22,22 @@ public class LocRepository {
     }
 
     public List<Result> getResults(String query) {
-        return webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                         // .queryParam("fo", "json")
-                  //           .queryParam("at", "results")
-                       .queryParam("q", query)
 
-                        .path(query+".json")
-                        .queryParam("callback", "myParser")
-                        .build()
+        System.out.println(query);
+        LocResponce lc = webClient.get()
+                .uri(uriBuilder -> {
+                    System.out.println(uriBuilder
+                            .path(query + ".json")
+                            .build()
+                            .toString());
+                           return uriBuilder.build();
+
+                }
                 )
                 .retrieve()
                 .bodyToMono(LocResponce.class)
-                .block()
-                .getResults();
+                .block();
+
+        return lc.getResults();
     }
 }

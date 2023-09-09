@@ -1,6 +1,7 @@
 package com.league.LeagueMusicAPI.repository.dto;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import jakarta.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -13,36 +14,54 @@ import jakarta.validation.Valid;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "MRData"
+        "lat",
+        "long",
+        "locality",
+        "country"
+
 })
-@Generated("jsonschema2pojo")
 public class Result {
+    //@JsonProperty("Races")
+   // private Map<String,Object> races = new LinkedHashMap<String,Object>();
 
-    @JsonProperty("MRData")
-    @Valid
-    private MRData mRData;
-    @JsonIgnore
-    @Valid
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    @JsonProperty("lat")
+    private String lat;
 
-    @JsonProperty("MRData")
-    public MRData getMRData() {
-        return mRData;
+    public void setLat(String newLat){
+        this.lat=newLat;
+    }
+    public String getLat(){
+        return lat;
     }
 
-    @JsonProperty("MRData")
-    public void setMRData(MRData mRData) {
-        this.mRData = mRData;
+    @JsonProperty("long")
+    private String longtitude;
+
+    public void setLong(String newLong){
+        this.longtitude = newLong;
+    }
+    public String getLong(){
+        return longtitude;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    @JsonProperty("locality")
+    private String locality;
+
+    public void setLocality(String newLocality){
+        this.locality= newLocality;
+    }
+    public String getLocality(){
+        return locality;
     }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    @JsonProperty("country")
+    private String country;
+
+    public void setCountry(String newCountry){
+        this.country=newCountry;
+    }
+    public String getCountry(){
+        return country;
     }
 
 }

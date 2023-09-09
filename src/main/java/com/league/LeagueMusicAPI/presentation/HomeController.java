@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
+@ResponseStatus(HttpStatus.MOVED_PERMANENTLY)
 public class HomeController {
 
     @GetMapping("/")
 
-    @ResponseStatus(HttpStatus.MOVED_PERMANENTLY)
 
     public String home(){
         return "redirect:swagger-ui.html";
