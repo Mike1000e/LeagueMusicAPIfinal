@@ -37,7 +37,7 @@ public class LocRepository {
                 .retrieve()
                 .bodyToMono(LocResponce.class)
                 .block();
-
+        System.out.println(lc);
         return lc.getResults();
     }
 }
