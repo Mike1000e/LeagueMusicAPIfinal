@@ -3,65 +3,44 @@ package com.league.LeagueMusicAPI.repository.dto;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.*;
 import jakarta.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "lat",
-        "long",
-        "locality",
-        "country"
+import java.util.List;
 
-})
 public class Result {
-    //@JsonProperty("Races")
-   // private Map<String,Object> races = new LinkedHashMap<String,Object>();
 
-    @JsonProperty("lat")
-    private String lat;
+    private String title;
 
-    public void setLat(String newLat){
-        this.lat=newLat;
-    }
-    public String getLat(){
-        return lat;
-    }
+    @JsonAlias("contributor")
+    private List<String> authors;
 
-    @JsonProperty("long")
-    private String longtitude;
+    @JsonAlias("id")
+    private String link;
 
-    public void setLong(String newLong){
-        this.longtitude = newLong;
-    }
-    public String getLong(){
-        return longtitude;
+    public String getTitle() {
+        return title;
     }
 
-    @JsonProperty("locality")
-    private String locality;
-
-    public void setLocality(String newLocality){
-        this.locality= newLocality;
-    }
-    public String getLocality(){
-        return locality;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    @JsonProperty("country")
-    private String country;
-
-    public void setCountry(String newCountry){
-        this.country=newCountry;
-    }
-    public String getCountry(){
-        return country;
+    public List<String> getAuthors() {
+        return authors;
     }
 
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

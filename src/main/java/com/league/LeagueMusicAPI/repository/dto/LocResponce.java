@@ -8,12 +8,10 @@ import java.util.*;
 
 public class LocResponce {
 
-    List<Result> results = new ArrayList<Result>();
+    List<Result> results = null;
 
     @JsonProperty("results")
     public List<Result> getResults(){
-
-        System.out.println(results);
     return results;
     }
 

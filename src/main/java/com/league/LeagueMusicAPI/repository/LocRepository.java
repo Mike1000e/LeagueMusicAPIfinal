@@ -12,7 +12,7 @@ public class LocRepository {
 
     private final WebClient webClient;
 
-    private static final String baseUrl = "http://ergast.com/api/";
+    private static final String baseUrl = "https://loc.gov/";
 
     public LocRepository() {
         webClient = WebClient
@@ -22,22 +22,28 @@ public class LocRepository {
     }
 
     public List<Result> getResults(String query) {
+System.out.println(webClient.get()
+        .uri(uriBuilder -> uriBuilder
+                .queryParam("fo", "json")
+                .queryParam("at", "results")
+                .queryParam("q", query)
+                .build()
+        ).retrieve()
+        .bodyToMono(LocResponce.class)
+        .block()
+        .getResults());
 
-        System.out.println(query);
-        LocResponce lc = webClient.get()
-                .uri(uriBuilder -> {
-                    System.out.println(uriBuilder
-                            .path(query + ".json")
+
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                            .queryParam("fo", "json")
+                            .queryParam("at", "results")
+                            .queryParam("q", query)
                             .build()
-                            .toString());
-                           return uriBuilder.build();
-
-                }
-                )
-                .retrieve()
+                ).retrieve()
                 .bodyToMono(LocResponce.class)
-                .block();
-        System.out.println(lc);
-        return lc.getResults();
+                .block()
+                .getResults();
+                }
     }
-}
+
