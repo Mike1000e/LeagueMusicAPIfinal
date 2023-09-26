@@ -12,7 +12,7 @@ public class LocRepository {
 
     private final WebClient webClient;
 
-    private static final String baseUrl = "https://loc.gov/";
+    private static final String baseUrl = "https://loc.gov/books";
 
     public LocRepository() {
         webClient = WebClient
