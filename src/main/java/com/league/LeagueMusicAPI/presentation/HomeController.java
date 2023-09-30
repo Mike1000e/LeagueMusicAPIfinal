@@ -13,7 +13,7 @@ public class HomeController {
     @GetMapping("/")
 
 
-    public String home(){
+    public static String home(){
         return "redirect:swagger-ui.html";
     }
 
